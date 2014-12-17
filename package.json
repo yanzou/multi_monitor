@@ -1,0 +1,35 @@
+{
+  "name": "multi_screen",
+  "version": "1.0.0",
+  "description": "A simple multi screen content displayer",
+  "keywords": [
+    "express",
+    "Node.js",
+    "socket.io",
+    "underscore"
+  ],
+  "author": {
+    "name": "Jack.zou",
+    "email": "googi.zou@gmail.com"
+  },
+  "homepage": "https://github.com/yanzou",
+  "repository": {
+    "type": "git"
+  },
+  "engines": {
+    "node": "> 0.9.0",
+    "npm": "> 1.0.0"
+  },
+  "dependencies": {
+    "body-parser": "1.4.3",
+    "express": "4.6.1",
+    "jade": "1.4.2",
+    "socket.io": "1.0.6",
+    "socket.io-client": "^1.2.1",
+    "underscore": "1.6.0"
+  },
+  "devDependencies": {},
+  "bundleDependencies": [],
+  "license": "MIT",
+  "main": "server.js"
+}
