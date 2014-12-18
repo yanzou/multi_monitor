@@ -14,4 +14,12 @@ $(document).on('ready', function() {
   $("a.reloadAll").on('click', function() {
     sendMessage("reloadAll");
   });
+
+  $("a.broadcast").on('click', function() {
+    var msg = $("textarea.msg").val().trim();
+
+    if (msg && msg !== "") {
+      sendMessage({type: "broadcast", msg: msg});
+    }
+  });
 });

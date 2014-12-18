@@ -29,7 +29,7 @@ app.post("/message", function(request, response) {
   var name = request.body.name;
   console.log("incomingMessage", message, name);
 
-  if(_.isUndefined(message) || _.isEmpty(message.trim())) {
+  if(_.isUndefined(message) || _.isEmpty(message)) {
     return response.json(400, {error: "Message is invalid"});
   }
 

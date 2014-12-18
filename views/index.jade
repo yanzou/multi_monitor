@@ -1,24 +1,10 @@
 extends _layout
 block content
     h1 Super Awesome Monitor
-        //div
-        //    div.inlineBlock
-        //        span Your name:
-        //            input(type="text", value="Anonymous")#name
-        //
-        //        form#messageForm
-        //            textarea(rows="4", cols="50", placeholder="Share something!", maxlength=200)#outgoingMessage
-        //            input(type="button", value="Share", disabled=true)#send
-        //
-        //    div.inlineBlock.topAligned
-        //        b Participants
-        //
-        //        div#participants
-        //
-        //    div#messages
-
-
+    div.broadcast.alert.alert-success.hide(role="alert")        
 
     iframe(src="http://www.baidu.com", name="baidu", id="baidu", target="baidu", scrolling="auto", frameborder="1")
     iframe(src="http://10.61.38.219:3000", name="taobao", id="taobao", target="_self", scrolling="auto", frameborder="1" hidefocus)
     iframe(src="http://www.douban.com", name="douban", id="douban", target="douban", scrolling="auto", frameborder="1" hidefocus)
+    
+    script(src='index.js')

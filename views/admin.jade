@@ -1,14 +1,17 @@
 extends _layout
 block content
-    h1 Super Awesome Monitor Admin
+    h1 Awesome Monitor Admin
     div
-        form#messageForm.form-line
+        form.form-line
             a.reloadAll.btn.btn-primary
                 | Reload All Page
-        
-        div.inlineBlock.topAligned
-            b Participants        
-            div#participants        
-            div#messages
+        br 
+        br
+        form#messageForm.form
+            .form-group
+                textarea.msg.form-control(col="25", row="10")
+            .form-group    
+                a.broadcast.btn.btn-primary
+                    | Broadcast Message
 
     script(src='admin.js')

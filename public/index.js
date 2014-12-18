@@ -31,6 +31,11 @@ function init() {
           frame.src = frame.src;
         });
       }
+    } else {
+      if (msg.message.type === "broadcast") {
+        $("div.broadcast").text(msg.message.msg).removeClass('hide');
+      }
+      //JSON.parse(
     }
   });
 
