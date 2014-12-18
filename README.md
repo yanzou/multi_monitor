@@ -6,3 +6,7 @@ Go
 2. cd multi_monitor
 3. npm install
 4. node server.js
+
+demo
+------------------
+![demo](public/assets/images/demo.png)
