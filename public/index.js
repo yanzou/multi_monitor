@@ -31,9 +31,18 @@ function init() {
           frame.src = frame.src;
         });
       }
+    } else if (msg.message === "reload") {
+      frame = $('iframe[name=baidu]');
+      frame.attr("src", msg.url);
     } else {
       if (msg.message.type === "broadcast") {
-        $("div.broadcast").text(msg.message.msg).removeClass('hide');
+        $(".modal.broadcast .modal-body .msg").text(msg.message.msg);
+        var m = $('.modal.broadcast');
+        m.modal('show');
+        setTimeout(function() {
+          m.modal('hide');
+        }, 10000);
+        
       }
       //JSON.parse(
     }

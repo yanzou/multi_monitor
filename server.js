@@ -39,15 +39,34 @@ app.post("/message", function(request, response) {
 
 });
 
+var urls = [
+  "https://rally1.rallydev.com/#/18139297458d/custom/26410441219",
+  "https://rally1.rallydev.com/#/18139297458d/defects?tpsV=sq%3A24555682024",
+  "https://rally1.rallydev.com/#/18139297458d/defects?tpsV=sq%3A21297327970",
+  "https://rally1.rallydev.com/#/18139297458d/releaseplanning",
+  "https://rally1.rallydev.com/#/15100140825d/oiterationstatus?iterationKey=19798500213",
+  "https://rally1.rallydev.com/#/15100140825d/custom/22296015722",
+  "https://rally1.rallydev.com/#/15100139854d/oiterationstatus?iterationKey=19798500205",
+  "https://rally1.rallydev.com/#/15100139854d/custom/22296015722",
+  "http://smarttestdb.cal.ci.spirentcom.com/stapp/state_report/",
+  "http://dashboard.cal.ci.spirentcom.com:8080/spd/",
+  "http://avalanche-jenkins.spirentcom.com:8080/view/AV-NEXT%20Release/",
+  "http://avalanche-jenkins.spirentcom.com:8080/view/Integration/",
+  "http://avalanche-jenkins.spirentcom.com:8080/view/Release/"
+],
+  counter = 0;
 /* Socket.IO events */
 io.on("connection", function(socket){
 
   socket.on("newUser", function(data) {
     clients.push({id: data.id, name: data.name});
     //io.sockets.emit("newConnection", {clients: clients});
-    // setTimeout(function() {
-    //   io.sockets.emit("refresh", {urls: ["baidu", "taobao"]});
-    // }, 6000);
+    console.log("newUser", data);
+    io.sockets.emit("incomingMessage", {message: 'reload', url: urls[counter++]});
+    setInterval(function() {
+      if (counter >= urls.length) counter = 0;
+      io.sockets.emit("incomingMessage", {message: 'reload', url: urls[counter++]});
+    }, 120000);
   });
 
   // socket.on("updateAll", function(data) {
