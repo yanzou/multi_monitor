@@ -39,19 +39,19 @@ function init() {
   });
 
 
-  var sendMessage = function(msg) {
-    $.ajax({
-      url:  '/message',
-      type: 'POST',
-      contentType: 'application/json',
-      dataType: 'json',
-      data: JSON.stringify({message: msg})
-    });
-  }
+  // var sendMessage = function(msg) {
+  //   $.ajax({
+  //     url:  '/message',
+  //     type: 'POST',
+  //     contentType: 'application/json',
+  //     dataType: 'json',
+  //     data: JSON.stringify({message: msg})
+  //   });
+  // }
 
-  $("a.reloadAll").on('click', function() {
-    sendMessage("reloadAll");
-  });
+  // $("a.reloadAll").on('click', function() {
+  //   sendMessage("reloadAll");
+  // });
 }
 
 
