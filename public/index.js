@@ -11,22 +11,26 @@ function init() {
     console.log('Connected ' + sessionId);
   });
 
-  socket.on('refresh', function (data) {
-    console.log('refresh', data)
-    var urls = data.urls,
+  socket.on('incomingMessage', function (msg) {
+    console.log('incomingMessage', msg)
+
+    var urls,
       frames,
       frame;
 
-    if (urls && urls.length) {
-      $.each(urls, function(idx, url) {
-        frame = $('frame[name='+ url +']')[0];
-        if (frame) {frame.src = frame.src;}
-      });
-    } else {
-      frames = $('frame');
-      $.each(frames, function(idx, frame) {
-        frame.src = frame.src;
-      });
+    if (msg.message === "reloadAll") {
+      urls = msg.urls
+      if (urls && urls.length) {
+        $.each(urls, function(idx, url) {
+          frame = $('iframe[name='+ url +']')[0];
+          if (frame) {frame.src = frame.src;}
+        });
+      } else {
+        frames = $('iframe');
+        $.each(frames, function(idx, frame) {
+          frame.src = frame.src;
+        });
+      }
     }
   });
 
@@ -34,6 +38,25 @@ function init() {
     console.log('Unable to connect to server', reason);
   });
 
+
+  var sendMessage = function(msg) {
+    $.ajax({
+      url:  '/message',
+      type: 'POST',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: JSON.stringify({message: msg})
+    });
+  }
+
+  $("a.reloadAll").on('click', function() {
+    sendMessage("reloadAll");
+  });
 }
 
-$(document).on('ready', init);
+
+
+$(document).on('ready', function() {
+  init();
+});
+
